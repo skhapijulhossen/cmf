@@ -217,9 +217,9 @@ class UNetExperimental(nn.Module):
         b = self.up2B(b4, b3)
         b = self.up3B(b, b2)
         b = self.up4B(b, b1)
-        b = self.outcB(b)
+        b = self.outcB(b) 
         # Add the output of module A to the output of module B
-        b = self.upoutb(b)
+        b = self.upoutb(b) + a
 
         # Module C
         x3 = self.downBlockB(x)
@@ -234,7 +234,7 @@ class UNetExperimental(nn.Module):
         c = self.up4C(c, c1)
         c = self.outcC(c)
         # Add the output of module B to the output of module C
-        c = self.upoutc(c)
+        c = self.upoutc(c) + b
         # Concatenate the outputs of module A, B, and C along the channel dimension
         mask = torch.cat([a, b, c], dim=1)
         return self.conv(mask)  # Return the final mask

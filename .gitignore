@@ -4,3 +4,6 @@ reference/
 micc_folds/
 .ipynb_checkpoints/
 micc_folds.rar
+pytorchEnv
+artifacts/
+
