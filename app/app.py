@@ -46,14 +46,14 @@ def main():
             model.load_state_dict(checkpoint["state_dict"])
             
             # Inference
-            preds = inference(model, image_tensor)
+            preds = inference(image_tensor, model)
             preds = preds.squeeze(0)
             preds = preds.cpu().detach().numpy()
-            new_image = Image.fromarray(preds)
+            # new_image = Image.fromarray(preds)
 
             # Display new generated image
             st.subheader("Generated Image")
-            st.image(new_image, caption="Generated Image",
+            st.image(preds[0], caption="Generated Image",
                      use_column_width=True)
 
 

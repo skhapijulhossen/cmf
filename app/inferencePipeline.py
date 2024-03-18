@@ -24,7 +24,7 @@ def preprocess_image(image):
 def inference(image, model,  device="cpu"):
     """Inferece forged regions in a given image.
     Args:
-        loader (torch.utils.data.DataLoader): Data loader for the image.
+        image :  RGB image or images.
         model (torch.nn.Module): Model for the inference.
         device (str): Device to use for inference.
     Returns:
@@ -42,4 +42,3 @@ def inference(image, model,  device="cpu"):
         return preds
     except Exception as e:
         logging.error(e)
-
